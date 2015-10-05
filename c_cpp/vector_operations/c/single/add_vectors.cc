@@ -42,6 +42,8 @@ main
   addVectors( size_a , result , alpha , va , beta , vb );
   printVector( size_a , result );
   
+  free(result);
+  
   return 0;
 }
 

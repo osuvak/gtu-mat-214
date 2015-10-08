@@ -16,7 +16,7 @@ addVectors
 void
 printVector
 (
-  std::vector<double> &v
+  const std::vector<double> &v
 );
 
 int
@@ -70,7 +70,7 @@ addVectors
 void
 printVector
 (
-  std::vector<double> &v
+  const std::vector<double> &v
 )
 {
   unsigned int i;

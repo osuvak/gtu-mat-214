@@ -12,7 +12,7 @@ subvector of each row of a matrix. The coefficient multiplying the vector
 %}
 
 %  set values
-chMethod = 2;
+chMethod = 1;
 flagSetMultiplier = 1;
 
 nExtraEntries = 2;
@@ -35,9 +35,11 @@ switch lower(chMethod)
             if flagSetMultiplier
                 coef = C(kk,end-length(a)+1) / a(1);
                 
+                % put zero where necessarily we should obtain zero
                 C(kk,end-length(a)+1) = 0;
                 C(kk,end-length(a)+2:end) = C(kk,end-length(a)+2:end) - coef * a(2:end);
 
+                % use the above instead of this
 %                  C(kk,end-length(a)+1:end) = C(kk,end-length(a)+1:end) - coef * a;
             else
                 coef = 1;

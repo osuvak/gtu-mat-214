@@ -50,10 +50,13 @@ switch lower(chMethod)
     case 2
         %  add(this method requires extra memory but does not use a for loop)
         if flagSetMultiplier
+        
+            % put zero where necessarily we should obtain zero
             temp = kron( C(:,end-length(a)+1) / a(1) , a(2:end) );
             C(:,end-length(a)+1) = zeros(size(C,1),1);
             C(:,end-length(a)+2:end) = C(:,end-length(a)+2:end) - temp;
             
+            % use the above instead of this
 %              temp = kron( C(:,end-length(a)+1) / a(1) , a );
 %              C(:,end-length(a)+1:end) = C(:,end-length(a)+1:end) - temp;
         else

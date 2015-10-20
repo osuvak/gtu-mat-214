@@ -29,6 +29,7 @@ disp(relativeError(norms(3).val,norms(4).val))
 
 %  inner function in nested functions
 function err = relativeError(a,b)
+disp('Nested function ''relativeError'' called.');
 err = norm(a-b) / (norm(a)+norm(b)/2);
 end
 

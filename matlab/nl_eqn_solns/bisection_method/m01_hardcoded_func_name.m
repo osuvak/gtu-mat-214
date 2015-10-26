@@ -15,7 +15,7 @@ the bisection method.
 
 In addition, a maximum number of iterations check is incorporated
 to be able to terminate with failure if the soln is not found
-(errors checks are not satisfied) in so many iterations.
+(error checks are not satisfied) in so many iterations.
 %}
 
 %  user sets these values

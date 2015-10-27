@@ -42,8 +42,8 @@ grid on;
 
 %  pre-process
 interval = intervalInit;
-interval.left.fval  = func_bias_diode( intervalInit.left.val );
-interval.right.fval = func_bias_diode( intervalInit.right.val );
+interval.left.fval  = func_bias_diode( interval.left.val );
+interval.right.fval = func_bias_diode( interval.right.val );
 interval.left.sign  = sign( interval.left.fval );
 interval.right.sign = sign( interval.right.fval );
 

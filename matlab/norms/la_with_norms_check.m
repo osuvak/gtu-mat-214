@@ -4,7 +4,7 @@ function la_with_norms_check
 %  and then checks if the computed solutions are almost the same
 format long e
 
-N = 100;
+N = 5;
 c1 = 4.5;
 c2 = 2.5;
 
@@ -27,9 +27,17 @@ x(2).val = U \ (L \ b);
 [L,U,p] = lu(A,'vector');
 x(3).val = U \ (L \ b(p));
 
+disp(p)
+disp(L)
+disp(U)
+
 %  with LU decomp (partial pivoting - permutation matrix returned)
 [L,U,P] = lu(A);
 x(4).val = U \ (L \ (P * b) );
+
+disp(P)
+disp(L)
+disp(U)
 
 %  call the independent function to compute errors
 disp('1 and 2')

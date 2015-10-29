@@ -112,13 +112,20 @@ while length(arrsoln) < maxIter
     
     % error check failed - prepare intervals for the next iteration
     if interval.left.sign * interval.mid.sign == -1
-        interval.right.val  = interval.mid.val;
-        interval.right.fval = interval.mid.fval;
-        interval.right.sign = interval.mid.sign;
+    
+        % % can do this
+%          interval.right.val  = interval.mid.val;
+%          interval.right.fval = interval.mid.fval;
+%          interval.right.sign = interval.mid.sign;
+
+        % but this is more efficient and takes less code
+        interval.right = interval.mid;
     else
-        interval.left.val   = interval.mid.val;
-        interval.left.fval  = interval.mid.fval;
-        interval.left.sign  = interval.mid.sign;
+%          interval.left.val   = interval.mid.val;
+%          interval.left.fval  = interval.mid.fval;
+%          interval.left.sign  = interval.mid.sign;
+
+        interval.left = interval.mid;
     end
 end
 

@@ -21,7 +21,7 @@ to be able to terminate with failure if the soln is not found
 %}
 
 %  user sets these values
-ch = 2;
+ch = 1;
 
 switch lower(ch)
     case 1
@@ -65,8 +65,8 @@ grid on;
 
 %  pre-process
 interval = intervalInit;
-interval.left.fval  = fhandle( intervalInit.left.val );
-interval.right.fval = fhandle( intervalInit.right.val );
+interval.left.fval  = fhandle( interval.left.val );
+interval.right.fval = fhandle( interval.right.val );
 interval.left.sign  = sign( interval.left.fval );
 interval.right.sign = sign( interval.right.fval );
 
@@ -135,13 +135,17 @@ while length(arrsoln) < maxIter
     
     % error check failed - prepare intervals for the next iteration
     if interval.left.sign * interval.mid.sign == -1
-        interval.right.val  = interval.mid.val;
-        interval.right.fval = interval.mid.fval;
-        interval.right.sign = interval.mid.sign;
+%          interval.right.val  = interval.mid.val;
+%          interval.right.fval = interval.mid.fval;
+%          interval.right.sign = interval.mid.sign;
+        
+        interval.right = interval.mid;
     else
-        interval.left.val   = interval.mid.val;
-        interval.left.fval  = interval.mid.fval;
-        interval.left.sign  = interval.mid.sign;
+%          interval.left.val   = interval.mid.val;
+%          interval.left.fval  = interval.mid.fval;
+%          interval.left.sign  = interval.mid.sign;
+        
+        interval.left = interval.mid;
     end
 end
 

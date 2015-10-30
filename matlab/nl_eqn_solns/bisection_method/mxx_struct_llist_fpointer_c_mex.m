@@ -9,7 +9,7 @@ This calls the mex function in which the bisection method has already been imple
 The user defined values are given as arguments to the mex function.
 
 The objective function (func_bias_diode) is hardcoded into the mex lib.
-This is disadvantage. If another objective function is desired, one must
+This is a disadvantage. If another objective function is desired, one must
 modify the C code and compile/link it again.
 %}
 

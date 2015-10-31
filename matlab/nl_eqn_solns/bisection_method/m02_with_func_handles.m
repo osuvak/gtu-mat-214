@@ -106,9 +106,9 @@ while length(arrsoln) < maxIter
         
         % check tolerances and quit the iterations if cond are satisfied
         % check - relative error in iterate
-        x_lhs = norm( arrsoln(end).data.val - arrsoln(end-1).data.val ) - abstol;
+        x_lhs = norm( arrsoln(end).data.val - arrsoln(end-1).data.val );
         x_rhs = 0.5 * ( norm(arrsoln(end).data.val) + norm(arrsoln(end-1).data.val) );
-        logicVal1 = ( x_lhs < reltol * x_rhs );
+        logicVal1 = ( x_lhs < reltol * x_rhs + abstol );
         % check - relative error in function value at the iterate
         f_lhs = norm( arrsoln(end).data.fval );
         f_rhs = fval_ref;

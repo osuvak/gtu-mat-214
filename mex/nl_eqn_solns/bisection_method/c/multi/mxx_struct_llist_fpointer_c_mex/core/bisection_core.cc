@@ -75,9 +75,9 @@ bisection_method
       
       // check tolerances and quit the iterations if cond are satisfied
       // check - relative error in iterate
-      x_lhs = fabs( last->point.val - interval.mid.val ) - opt.abstol;
+      x_lhs = fabs( last->point.val - interval.mid.val );
       x_rhs = 0.5 * ( fabs(last->point.val) + fabs(interval.mid.val) );
-      logicVal1 = ( x_lhs < opt.reltol * x_rhs );
+      logicVal1 = ( x_lhs < opt.reltol * x_rhs + opt.abstol );
       // check - relative error in function value at the iterate
       f_lhs = fabs( interval.mid.fval );
       f_rhs = fval_ref;

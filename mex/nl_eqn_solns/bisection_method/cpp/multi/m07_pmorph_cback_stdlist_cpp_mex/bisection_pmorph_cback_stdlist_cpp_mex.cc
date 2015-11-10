@@ -213,111 +213,11 @@ void mexFunction
   {
     plhs[1] = mxCreateDoubleScalar( (double) B->getFlag() );
   }
-  
-#if 0  
-  // report
-  if ( -1 != B.getFlag() )
-  {
-    const std::list<SolnItem> &llist = B.getList();
-    int cnt;
-    
-    printf("\nValues and Function Values\n\n");
-    cnt = 0;
-    for 
-      (
-        std::list<SolnItem>::const_iterator 
-          it = llist.begin() ; 
-        it != llist.end() ; 
-        ++it
-      )
-    {
-      cnt++;
-      printf
-        ( "Iter %d : %.16e %.16e\n" , cnt , 
-          (*it).point.val , (*it).point.fval
-        );
-    }
-    
-    printf("\nErrors in Values and Function Values\n\n");
-    cnt = 0;
-    for 
-      (
-        std::list<SolnItem>::const_iterator 
-          it = llist.begin() ; 
-        it != llist.end() ; 
-        ++it
-      )
-    {
-      cnt++;
-      printf
-        ( "Iter %d : %.16e %.16e\n" , cnt , 
-          (*it).err_x , (*it).err_f
-        );
-    }
-  }
-#endif
 
   // destroy allocated space
   delete d_log;
   delete B;
-
-#if 0  
-  // initialize soln
-  inialize(&soln);
   
-  // run
-  flag = bisection_method( &opt , &soln );
-  
-  // prepare the output to be returned to matlab prompt
-  const char *field_names[] = { "val" , "fval" , "err_x" , "err_f" };
-  mwSize dims[2] = { 1 , size(&soln) };
-  
-  int       field_val , field_fval , field_err_x , field_err_f;
-  mxArray * value;
-  
-  if ( -1 == flag )
-  {
-    plhs[0] = mxCreateDoubleMatrix(0,0,mxREAL);
-  }
-  else
-  {
-    plhs[0] = mxCreateStructArray(2, dims, 4, field_names);
-  
-    field_val   = mxGetFieldNumber( plhs[0] , "val"   );
-    field_fval  = mxGetFieldNumber( plhs[0] , "fval"  );
-    field_err_x = mxGetFieldNumber( plhs[0] , "err_x" );
-    field_err_f = mxGetFieldNumber( plhs[0] , "err_f" );
-    
-    if (size(&soln) > 0)
-    {
-      cnt = 0;
-      cptr = soln.llist;
-      while ( cptr != NULL )
-      {
-        value = mxCreateDoubleScalar( cptr->point.val );
-        mxSetFieldByNumber( plhs[0] , cnt , field_val    , value );
-        value = mxCreateDoubleScalar( cptr->point.fval );
-        mxSetFieldByNumber( plhs[0] , cnt , field_fval   , value );
-        value = mxCreateDoubleScalar( cptr->err_x );
-        mxSetFieldByNumber( plhs[0] , cnt , field_err_x  , value );
-        value = mxCreateDoubleScalar( cptr->err_f );
-        mxSetFieldByNumber( plhs[0] , cnt , field_err_f  , value );
-        
-        cptr = cptr->next;
-        cnt++;
-      }
-    }
-  }
-  
-  // the second output (if required)
-  if ( nlhs >= 2 )
-  {
-    plhs[1] = mxCreateDoubleScalar( (double) flag );
-  }
-  
-  // destroy soln
-  destroy(&soln);
-#endif  
   return;
 }
 

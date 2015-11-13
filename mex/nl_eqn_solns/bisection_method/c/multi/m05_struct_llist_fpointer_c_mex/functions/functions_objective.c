@@ -1,4 +1,4 @@
-#include "functions_objective.hh"
+#include "functions_objective.h"
 
 double
 func_bias_diode

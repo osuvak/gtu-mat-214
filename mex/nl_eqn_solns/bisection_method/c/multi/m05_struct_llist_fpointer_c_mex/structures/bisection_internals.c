@@ -1,4 +1,4 @@
-#include "bisection_internals.hh" 
+#include "bisection_internals.h" 
 
 void
 inialize
@@ -16,7 +16,7 @@ destroy
   SolnIterates *item
 )
 {
-  SolnLList_ *cptr , *tmp;
+  SolnLList *cptr , *tmp;
   
   if ( item->size <= 0 )
     return;

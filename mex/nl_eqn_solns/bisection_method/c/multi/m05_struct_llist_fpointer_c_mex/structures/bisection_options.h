@@ -1,5 +1,9 @@
-#ifndef BISECTION_OPTIONS_HH_
-#define BISECTION_OPTIONS_HH_
+#ifndef BISECTION_OPTIONS_H_
+#define BISECTION_OPTIONS_H_
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 typedef struct BisectionOptions_
 {
@@ -13,5 +17,9 @@ typedef struct BisectionOptions_
   unsigned 
   int maxIter;
 }BisectionOptions;
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

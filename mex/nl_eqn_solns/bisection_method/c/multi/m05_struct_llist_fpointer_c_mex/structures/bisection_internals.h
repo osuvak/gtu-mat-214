@@ -35,6 +35,7 @@ typedef struct
 SolnIterates_
 {
   SolnLList    *llist;
+  SolnLList    *llist_end;
   unsigned int  size;
 }SolnIterates;
 

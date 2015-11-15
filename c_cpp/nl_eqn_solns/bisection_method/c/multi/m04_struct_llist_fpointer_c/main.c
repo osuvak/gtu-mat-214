@@ -1,9 +1,9 @@
 #include<stdio.h> 
 
-#include "functions_objective.hh"
-#include "bisection_options.hh"
-#include "bisection_internals.hh"
-#include "bisection_core.hh"
+#include "functions_objective.h"
+#include "bisection_options.h"
+#include "bisection_internals.h"
+#include "bisection_core.h"
 
 int
 main

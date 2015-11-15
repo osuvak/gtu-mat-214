@@ -1,4 +1,4 @@
-#include "bisection_internals.hh" 
+#include "bisection_internals.h" 
 
 void
 inialize
@@ -6,7 +6,8 @@ inialize
   SolnIterates *item
 )
 {
-  (*item).llist = NULL;
+  (*item).llist     = NULL;
+  (*item).llist_end = NULL;
   (*item).size  = 0;
 }
 
@@ -16,7 +17,7 @@ destroy
   SolnIterates *item
 )
 {
-  SolnLList_ *cptr , *tmp;
+  SolnLList *cptr , *tmp;
   
   if ( item->size <= 0 )
     return;
@@ -38,6 +39,8 @@ destroy
     item->llist = cptr;
     (item->size)--;
   }
+  // update end pointer
+  item->llist_end = NULL;
 }
 
 unsigned int
@@ -70,12 +73,7 @@ append
   tmp->next = NULL;
   
   // traverse to the end of the list
-  end = item->llist;
-  if ( end != NULL )
-  {
-    while (end->next != NULL)
-      end = end->next;
-  }
+  end = item->llist_end;
   
   // connect tmp
   if ( end != NULL )
@@ -85,6 +83,7 @@ append
   // update llist and size
   if ( item->size <= 0 ) // if the list has just been initialized
     item->llist = tmp;
+  item->llist_end = tmp;
   (item->size)++;
 }
 
@@ -94,15 +93,5 @@ getLast
   SolnIterates *item
 )
 {
-  SolnLList *end;
-  
-  // traverse to the end of the list
-  end = item->llist;
-  if ( end != NULL )
-  {
-    while (end->next != NULL)
-      end = end->next;
-  }
-  
-  return end;
+  return item->llist_end;
 }

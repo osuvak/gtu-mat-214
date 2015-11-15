@@ -1,4 +1,4 @@
-#include "bisection_core.hh" 
+#include "bisection_core.h" 
 
 // 
 // bisection_method

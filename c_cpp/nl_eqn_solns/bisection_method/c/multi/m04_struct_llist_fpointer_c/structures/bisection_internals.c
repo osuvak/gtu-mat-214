@@ -1,7 +1,7 @@
 #include "bisection_internals.h" 
 
 void
-inialize
+initialize
 (
   SolnIterates *item
 )

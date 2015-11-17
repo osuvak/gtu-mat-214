@@ -40,7 +40,7 @@ SolnIterates_
 }SolnIterates;
 
 void
-inialize
+initialize
 (
   SolnIterates *item
 );

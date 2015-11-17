@@ -28,7 +28,7 @@ main
   opt_exp.fptr = func_bias_diode_with_exp;
   
   // initialize soln
-  inialize(&soln);
+  initialize(&soln);
   
   // run
   flag = bisection_method( &opt_log , &soln );

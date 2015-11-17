@@ -109,7 +109,7 @@ void mexFunction
   }
   
   // initialize soln
-  inialize(&soln);
+  initialize(&soln);
   
   // run
   flag = bisection_method( &opt , &soln );

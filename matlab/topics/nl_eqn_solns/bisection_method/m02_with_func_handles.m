@@ -21,7 +21,7 @@ to be able to terminate with failure if the soln is not found
 %}
 
 %  user sets these values
-ch = 1;
+ch = 2;
 
 switch lower(ch)
     case 1

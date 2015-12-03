@@ -1,0 +1,20 @@
+* envelope detector
+
+*vin 1 0 sin(2 1 1e6)
+
+.include input.cir
+
+d 1 2 diode
+r 2 0 1e3
+c 2 0 1e-10
+
+.model diode d
+.tran 1e-9 1e-6
+
+.control
+run
+setplot tran1
+
+plot v(1) v(2)
+.endc
+.end

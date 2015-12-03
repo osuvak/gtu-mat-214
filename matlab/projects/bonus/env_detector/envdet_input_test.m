@@ -27,15 +27,18 @@ xOutput = xSignal .* xCarrier;
 
 %  plot
 figure;
-plot(t,xOutput)
+hs = plot(t,xOutput,'LineWidth',2);
 hold off;
 hold on;
-plot( t , +xSignal,'Color','r')
+he = plot( t , +xSignal , 'Color','r','LineWidth',2);
 hold off;
 hold on;
-plot( t , -xSignal,'Color','r')
+plot( t , -xSignal , 'Color','r','LineWidth',2)
 hold off;
 
+xlabel('time (sec)')
+title('Signal and Its Envelope')
+legend([hs he],'signal','envelope','Location','South','Orientation','Horizontal')
 grid on;
 
 fileID = fopen('input.cir','w');

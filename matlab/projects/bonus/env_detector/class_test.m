@@ -7,6 +7,9 @@ format long e
 
 %  initialize
 ao = EnvelopeDetector();
+
+%  ao.N_big = 50;
+
 ao.setup();
 
 %  prep
@@ -25,10 +28,13 @@ toc
 
 %  plot
 figure;
-plot(t,x)
+ho = plot(t,x,'LineWidth',3);
 hold off;
 hold on;
-plot(ao.t,ao.xOutput,'Color','r')
+hi = plot(ao.t,ao.xOutput,'Color','r','LineWidth',3);
 hold off;
 
+xlabel('time (sec)')
+title('Envelope Detector - Input and Output')
+legend([ho hi],'output','input','Location','South','Orientation','Horizontal')
 grid on;

@@ -17,7 +17,8 @@ struct FPTRHolder
   ~FPTRHolder ()
   {
 #ifdef REPORT_EXISTENCE
-    std::cout << "Destroying type : \"FPTRHolder\"" << std::endl;
+    using namespace std;
+    cout << "Destroying type : \"FPTRHolder\"" << endl;
 #endif
   }
   

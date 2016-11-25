@@ -24,7 +24,8 @@ int main(void)
   for ( std::list<FPTRHolder>::iterator it=llist.begin() ; it != llist.end() ; ++it )
   {
     cout << "Index of Current Holder : " << ii << endl;
-    printf( "Result : %7.3f\n" , it->fptr(num) );
+//     printf( "Result : %7.3f\n" , it->fptr(num) );
+    printf( "Result : %7.3f\n" , (*it).fptr(num) );
     
     if ( ii < - 1 + llist.size() )
     { cout << endl; }

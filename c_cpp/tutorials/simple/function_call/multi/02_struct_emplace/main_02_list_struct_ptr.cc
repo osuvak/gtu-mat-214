@@ -19,11 +19,14 @@ int main(void)
   
   llist.push_front( new FPTRHolder() );
   (*(llist.begin()))->fptr = increment_by_one;
-  llist.push_front( new FPTRHolder() );
-  (*(llist.begin()))->fptr = squarer;
+  FPTRHolder *temp;
+  temp = new FPTRHolder();
+  llist.push_front( temp );
+  (*(*(llist.begin()))).fptr = squarer;
+//   (llist.begin())->fptr = squarer;
   
   double num = 4.1;
-  unsigned int ii = -1;
+  int ii = -1;
   
   for ( std::list<FPTRHolder*>::iterator it=llist.begin() ; it != llist.end() ; ++it )
   {

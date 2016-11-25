@@ -58,7 +58,7 @@ class Rectangle
     ~Rectangle()
     { report_destruction(); }
     
-    int area() {return width_ * height_;}
+    int area() const {return width_ * height_;}
     
     void report( std::ostream& stream , std::string keyword )
 #ifndef MAKE_REPORTERS_NON_CONST    

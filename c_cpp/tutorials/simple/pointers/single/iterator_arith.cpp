@@ -1,3 +1,17 @@
+/*
+ * An exercise on list iterator arithmetics.
+ * Pre/Post increment/decrement are not distinct.
+ * Storing apparently non-existent dereferenced container content,
+ * but keeping list content intact, no errors/asserts/exceptions.
+ * 
+ * Also C-style array initialization example included.
+ * "get_size" function template now working.
+ * 
+ * See the following entry on this last aspect:
+ * http://stackoverflow.com/questions/9626722/c-string-array-initialization
+ * 
+ * */
+
 #include <iostream> 
 #include <cstdio>
 #include <vector>
@@ -5,20 +19,8 @@
 
 void print_contents( const std::list<double> & dlist );
 
-template <typename T>
-unsigned int get_size(T * container)
-// unsigned int get_size(const std::list<T> & container)
-{
-  using namespace std;
-  
-  static unsigned int no_calls = 0;
-  
-  cout << "Number of call to get_size : " << ++no_calls << endl;
-  cout << "Size of container : " << sizeof(container) << endl;
-  cout << "Size of T         : " << sizeof(T) << endl;
-  
-  return sizeof(container) / sizeof(T);
-}
+template <typename T , unsigned N>
+unsigned int get_size( T const (&container)[N] );
 
 int main(void)
 {
@@ -27,8 +29,10 @@ int main(void)
   const double dlist_raw[] = { 3.14 , 2.71 , -1.2 , 0.19  };
   
   list<double> dlist;
-  for ( unsigned int ii = 0 ; ii < sizeof(dlist_raw) / sizeof(double) ; ii++ )
-//   for ( unsigned int ii = 0 ; ii < get_size(dlist_raw) ; ii++ )
+  
+  unsigned int size = get_size(dlist_raw);
+  for ( unsigned int ii = 0 ; ii < size ; ii++ )
+//   for ( unsigned int ii = 0 ; ii < sizeof(dlist_raw) / sizeof(double) ; ii++ )
     dlist.push_back( dlist_raw[ii] );
   
   print_contents( dlist );
@@ -69,6 +73,23 @@ int main(void)
   } // scope end
   
   return 0;
+}
+
+template <typename T , unsigned N>
+unsigned int get_size( T const (&container)[N] )
+// BOTH OF THE FOLLOWING ARE JUNK.
+// unsigned int get_size(T * container)
+// unsigned int get_size(const std::list<T> & container)
+{
+  using namespace std;
+  
+  static unsigned int no_calls = 0;
+  
+  cout << "Number of call to get_size : " << ++no_calls << endl;
+  cout << "Size of container : " << sizeof(container) << endl;
+  cout << "Size of T         : " << sizeof(T) << endl;
+  
+  return sizeof(container) / sizeof(T);
 }
 
 void print_contents( const std::list<double> & dlist )

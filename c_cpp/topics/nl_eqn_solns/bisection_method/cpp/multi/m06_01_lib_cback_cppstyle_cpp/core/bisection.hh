@@ -86,6 +86,7 @@ public:
   int
   getFlag
   ()
+  const
   {
     return flag_;
   }
@@ -93,6 +94,7 @@ public:
   const std::list<SolnItem> &
   getList
   ()
+  const
   {
     return llist_;
   }

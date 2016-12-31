@@ -9,9 +9,7 @@
 #include "bisection_internals.hh"
 #include "bisection.hh"
 
-// commenting or uncommenting this define should work
-// NOTE : In "bisection.hh" the same value should be defined/undefined as well
-#define USE_SHARED_PTR_INSIDE_LIB
+#include "defines.hh"
 
 int
 main

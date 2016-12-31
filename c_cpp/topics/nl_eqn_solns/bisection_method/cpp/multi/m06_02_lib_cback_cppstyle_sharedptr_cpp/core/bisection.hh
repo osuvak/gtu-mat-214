@@ -11,7 +11,7 @@
 #include "internals/bisection_internals.hh"
 #include "utilities/utilities_general.hh"
 
-#define USE_SHARED_PTR_INSIDE_LIB
+#include "common/defines.hh"
 
 namespace nummethods
 {
